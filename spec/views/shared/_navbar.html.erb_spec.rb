@@ -13,8 +13,7 @@ describe "shared/_navbar.html.erb" do
     end
   end
 
-  #test for the shared/_navbar.html.erb file to check that when the user is not signed in,
-  # the log in and sign up links get rendered.
+
   context "with profile" do
     let(:profile) { create :profile }
     let(:user) { create :user, profile: profile }
@@ -26,3 +25,6 @@ describe "shared/_navbar.html.erb" do
     end
   end
 end
+
+#test for the shared/_navbar.html.erb file to check that when the user is not signed in,
+# the log in and sign up links get rendered. TODO
