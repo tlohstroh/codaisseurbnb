@@ -11,4 +11,8 @@ class Profile < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def self.by_letter(letter)
+    where("first_name LIKE ?", "#{letter}%").order(:first_name)
+  end
+
 end
