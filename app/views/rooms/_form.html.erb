@@ -1,4 +1,5 @@
-<%= form_for @room do |f| %>
+<%= form_for @room, html: { multipart: true } do |f| %>
+
     <div class="form-group">
       <label>Home Type</label>
       <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Bed & Breakfast", "Bed & Breakfast"]], id: "home_type", prompt: "Select home type", class: "form-control" %>
