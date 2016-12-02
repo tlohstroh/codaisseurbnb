@@ -1,5 +1,7 @@
 <%= form_for @room, html: { multipart: true } do |f| %>
 
+    <ul> <% @room.errors.full_messages.each do |msg| %> <li><%= msg %></li> <% end %> </ul>
+
     <div class="form-group">
       <label>Home Type</label>
       <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Bed & Breakfast", "Bed & Breakfast"]], id: "home_type", prompt: "Select home type", class: "form-control" %>
