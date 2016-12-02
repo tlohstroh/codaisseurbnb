@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [:new, :edit, :create, :update]
   resources :photos
 
+  namespace :api do
+    resources :rooms do
+      resources :bookings, only: [:create, :update, :destroy]
+    end
+  end
 end

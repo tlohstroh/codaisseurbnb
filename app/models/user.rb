@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :booked_rooms, through: :bookings, source: :room
 
+  def self.active_users
+    User.where('last_sign_in_at >= ?', 3.months.ago)
+  end
+
   def has_profile?
     profile.present?
   end
@@ -11,6 +15,8 @@ class User < ApplicationRecord
   def full_name
     profile.full_name
   end
+
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
