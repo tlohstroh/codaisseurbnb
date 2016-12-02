@@ -54,6 +54,13 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
   end
 
+  # We need to update the room_params method in the RoomsController to allow theme ids to be mass-assigned.
+  # Because we're dealing with an array, we have to set the theme_ids key to an empty array.
+  # https://read.codaisseur.com/topics/day-9-activerecord-fabaaa88-1830-4371-a3d4-bd7e21352ac4/articles/05-many-to-many
+  # def room_params
+  # params.require(:room).permit(..., theme_ids: [])
+  # end
+
   def room_params
     params.require(:room).permit(:home_type, :room_type, :accommodate, :bedroom_count, :bathroom_count, :listing_name, :description, :address, :has_tv, :has_kitchen, :has_airco, :has_heating, :has_internet, :price, :active, theme_ids: [])
   end

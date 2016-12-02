@@ -63,6 +63,13 @@
 
     <label>Themes</label>
 
+    <!-- collection_check_boxes helper method.
+    It takes four parameters:
+    the name of the attribute (theme_ids),
+    the collection of objects (Theme.all),
+    the value to use for the checkbox input (:id),
+    and the text to be displayed next to the checkbox (:name). 
+    -->
     <%= f.collection_check_boxes(:theme_ids, Theme.all, :id, :name) do |b| %>
         <div class="form-group">
           <%= b.check_box(class: "check_box") %> <%= b.object.name %>
