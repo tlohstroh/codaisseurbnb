@@ -26,6 +26,9 @@ class Room < ApplicationRecord
     order(:price)
   end
 
+  # What is not smart about this is: we are looping over ALL the bookings,
+  # also the past ones. In the future we wil learn to retreive from the database
+  # where date is > today...
   def available?(checkin, checkout)
     bookings.each do |booking|
       if (booking.starts_at <= checkout) && (booking.ends_at >= checkin)
