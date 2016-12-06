@@ -45,6 +45,10 @@ RSpec.describe Room, type: :model do
     end
   end
 
+  # You'll need a new code example that creates bookings for a room-user
+  # combination and then expects that calling room.bookings returns an array
+  # that includes the associated users.
+  
   describe "association with booking" do
     let(:guest_user) { create :user, email: "guest@user.com" }
     let(:host_user) { create :user, email: "host@user.com" }
