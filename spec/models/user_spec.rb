@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  #  you'll again need to start by creating bookings for a room-user combo.
+  # Then you should expect that calling user.booked_rooms returns an array that
+  # includes the booked rooms.
   describe "association with booking" do
     let(:guest_user) { create :user, email: "guest@user.com" }
     let(:host_user) { create :user, email: "host@user.com" }
