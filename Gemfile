@@ -7,6 +7,7 @@ gem 'rails_12factor', group: :production
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'jquery-ui-rails'
+gem 'cancancan'
 
 
 gem 'active_model_serializers', '~> 0.10.0'
