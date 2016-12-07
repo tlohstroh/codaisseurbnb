@@ -16,4 +16,7 @@ Rails.application.routes.draw do
       resources :bookings, only: [:create, :update, :destroy]
     end
   end
+
+  post '/preload' => 'bookings#preload'
+
 end

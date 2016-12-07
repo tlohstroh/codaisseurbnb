@@ -18,6 +18,13 @@ class BookingsController < ApplicationController
     end
   end
 
+  def preload
+  room = Room.find(params[:room_id])
+  bookings = room.current_and_future_bookings
+
+  render json: bookings
+  end
+
   private
 
   def total_price(checkin, checkout, price)
