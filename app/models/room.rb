@@ -43,4 +43,29 @@ class Room < ApplicationRecord
     today = Date.today
     bookings.where("starts_at >= ? OR ends_at >= ?", today, today)
   end
+
+  def self.single_bedroom
+    where(bedroom_count: 1)
+  end
+
+  def self.for_couples
+    single_bedroom.where(accommodate: 2)
+  end
+
+  # --------------------
+  # https://read.codaisseur.com/topics/day-14-sql-and-relations/articles/2-3-has-many
+
+  # returns the room id's of bookings during a period (occupied rooms during that period)
+  # .pluck means: SELECT room_id FROM bookings .........
+  def self.booked_during(arrival, departure)
+    Booking.during(arrival, departure).pluck(:room_id)
+  end
+
+  # returns all rooms with no bookings
+  def self.available_during(arrival, departure)
+    where.not(id: booked_during(arrival, departure))
+  end
+
+
+
 end

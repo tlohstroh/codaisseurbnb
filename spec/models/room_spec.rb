@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
+
   describe "validations" do
     it "is invalid without a home type" do
       room = Room.new(home_type: "")
@@ -84,10 +85,18 @@ RSpec.describe Room, type: :model do
         expect(subject).to be false
       end
     end
+
+    # https://read.codaisseur.com/topics/day-14-sql-and-relations/articles/2-3-has-many
+    # Write tests in room_spec to prove (or disprove) available_during works
+
+    it "is available during" do
+      expect(Room.available_during(7.days.from_now, 10.days.from_now)).to include(room)
+    end
+
+    it "is not available during" do
+      expect(Room.available_during(3.days.from_now, 5.days.from_now)).not_to include(room)
+    end
+
   end
 
-
-
-
-
-end
+end 
