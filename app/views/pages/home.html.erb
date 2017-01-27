@@ -1,2 +1,13 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% @rooms.each do |room|%>
+  <div class="col-md-4 well well-lg">
+    <%= link_to room.listing_name, room_path(room.id)%>
+    <div class="">
+        <% if room.photos[0].present? %>
+          <%= image_tag "#{room.photos[0].image.thumbnail}" %>
+        <% end %>
+    </div>
+  </div>
+<% end %>
